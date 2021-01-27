@@ -1,0 +1,42 @@
+.answerSection {
+  -webkit-box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.50);
+  -moz-box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.50);
+  box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.50);
+  width: 50%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.answerSection.correctAnswer {
+  background-color: rgb(217, 255, 219);
+}
+
+.answerSection:not(.correctAnswer) {
+  background-color: rgb(255, 255, 255);
+  transition: all .1s linear
+}
+
+.playBtn {
+  color: white;
+  background-color: rgb(75, 174, 255);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.playBtn:hover {
+  background-color: rgb(70, 162, 238);
+}
+
+.playBtn:focus {
+  outline-color:  rgb(140, 190, 231);
+}
+
+.playBtnSvg {
+  width: 10px;
+  height: 10px;
+}

@@ -1,0 +1,64 @@
+.settings {
+  padding: 10px;
+  background-color: rgb(253, 214, 221);
+  -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.50);
+  -moz-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.50);
+  box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.50);
+  display: flex;
+  flex-direction: row;
+}
+
+.settings > div {
+  width: 50%;
+}
+
+.speed, .bounds, .miscelaneous {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bounds > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.bounds input {
+  width: 3rem;
+}
+
+.speed input {
+  width: 50%;
+}
+
+.settingName {
+  margin-top: 0;
+  text-decoration: underline;
+}
+
+.settings.hidden {
+  margin-bottom: -150px;
+  transition: all .5s linear
+}
+
+.settings:not(.hidden) {
+  margin-bottom: 0;
+  transition: all .3s linear
+}
+
+.reset {
+  background-color: rgb(255, 103, 134);
+  border: none;
+  padding: 5px 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.50);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.50);
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.50);
+}
+
+.reset:hover {
+  background-color:  rgb(253, 52, 92);
+}
