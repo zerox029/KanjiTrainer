@@ -1,6 +1,7 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 import AnswerSection from './components/AnswerSection/AnswerSection.component.jsx';
+import Modal from './components/Modal/Modal.component.jsx';
 
 import particlesOptions from './particles.json';
 import './App.css';
@@ -15,10 +16,6 @@ export default class App extends React.Component {
   }
 
   componentDidMount = () => {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:8765');
-    xhr.send(JSON.stringify({'action': 'createDeck', 'version': 6, 'params': {deck: 'test1'}}));
-
     let score = localStorage.getItem("score") ?? 0;
 
     this.setState({
@@ -36,17 +33,21 @@ export default class App extends React.Component {
     localStorage.setItem(name, value);
   }
 
+  openModal = () => {
+    document.querySelector(".modal").classList.add("showModal");
+  }
+
   render = () => {
     return (
       <div className="App">
         <Particles options={particlesOptions}/>
         
-        <h1 className="title jpText">漢字トレーナー</h1>
+        <h1 className="title jpText" onClick={this.openModal}>漢字トレーナー</h1>
 
         <div className="playArea">
           <h2 className="jpText">{this.state.score}点</h2>
-          <AnswerSection     
-            onValidAnswer={this.handleValidAnswer} />
+          <AnswerSection onValidAnswer={this.handleValidAnswer} />
+          <Modal />
         </div>
       </div>
     );
