@@ -10,6 +10,10 @@ export default class Modal extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    this.populateDecksList();
+  }
+
   closeModal = () => {
     document.querySelector(".modal").classList.remove("showModal");
   }
@@ -44,9 +48,19 @@ export default class Modal extends React.Component {
     });
   }
 
-  fetchDecksList = async () => {
-    const result = await this.invoke('deckNames', 6);
-    console.log(`got list of decks: ${result}`);
+  populateDecksList = async () => {
+    let decks =  await this.invoke('deckNames', 6);
+    let selectKanji = document.querySelector(".decksKanji");
+    let selectVocab = document.querySelector(".decksVocab");
+
+    decks.sort();
+    for(let deck of decks) {
+      let option = document.createElement("option");
+      option.text = deck;
+      option.value = deck;
+      selectVocab.appendChild(option);
+      selectKanji.appendChild(option.cloneNode(true));
+    }
   }
 
   render() {
@@ -54,7 +68,8 @@ export default class Modal extends React.Component {
       <div className="modal">
         <div className="modalContent">
             <span className="modalCloseButton" onClick={this.closeModal}>&times;</span>
-            <h1 onClick={this.fetchDecksList}>Hello, I am a modal!</h1>
+            <select name="decksKanji" className="decksKanji"></select>
+            <select name="decksVocab" className="decksVocab"></select>
         </div>
       </div>
     )
